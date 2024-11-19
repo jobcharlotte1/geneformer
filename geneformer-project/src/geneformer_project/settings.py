@@ -48,3 +48,10 @@ CONFIG_LOADER_ARGS = {
 # Class that manages the Data Catalog.
 # from kedro.io import DataCatalog
 # DATA_CATALOG_CLASS = DataCatalog
+
+from kedro_geneformer.kedro_geneformer.geneformer-project.io.anndata_dataset import AnnDataSet
+
+DATASET_CATALOG = {
+    "anndata": AnnDataSet
+}
+
