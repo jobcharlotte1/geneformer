@@ -39,6 +39,17 @@
 # (transcoding), templating and a way to reuse arguments that are frequently repeated. See more here:
 # https://docs.kedro.org/en/stable/data/data_catalog.html
 
+GENE_MEDIAN_FILE:
+    type: pickle.PickleDataSet
+    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/gene_median_dictionary.pkl'
+    
+ENSEMBL_MAPPING_FILE:
+    type: pickle.PickleDataSet
+    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/gene_name_id_dict.pkl'
+    
+TOKEN_DICTIONARY_FILE:
+    type: pickle.PickleDataSet
+    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/token_dictionary.pkl'
 
 cardiomyocytes_anndata_raw:
   type: kedro.extras.datasets.biosequence.AnnDataSet
@@ -48,18 +59,20 @@ cardiomyocytes_anndata_preprocessed:
     type: kedro.extras.datasets.biosequence.AnnDataSet
     filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/02_intermediate/top_5000_hvg_cardiomyocytes_data.h5ad'
     
-pdac_tisch_anndata_raw:
+cardiomyocytes_tokenized:
+    type: kedro.extras.datasets.biosequence.AnnDataSet
+    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/02_intermediate/top_5000_hvg_cardiomyocytes_data.h5ad'
+    
+pdac_PAAD_CRA001160_tisch_anndata_raw:
     type: kedro.extras.datasets.biosequence.AnnDataSet
     filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/PAAD_CRA001160_expression.h5'
     
-gene_median_dict_raw:
-    type: pickle.PickleDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/gene_median_dictionary.pkl'
+metainfo_PAAD_CRA001160_csv:
+  type: pandas.CSVDataSet
+  filepath: f'/home/BS94_SUR/tischdb_data/pdac_data/PAAD_CRA001160_CellMetainfo_table.tsv
+  load_args:
+    sep: ","  # Optional: specify delimiter if not standard
     
-gene_name_id_dict_raw:
-    type: pickle.PickleDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/gene_name_id_dict.pkl'
-    
-token_dict_raw:
-    type: pickle.PickleDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/token_dictionary.pkl'
+expressionmatrix_PAAD_CRA001160_h5:
+  type: pandas.HDFDataSet
+  filepath: f'/home/BS94_SUR/tischdb_data/pdac_data/PAAD_CRA001160_expression.h5

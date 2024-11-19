@@ -1,0 +1,16 @@
+select_hvg_genes:
+    nb_top_genes: 5000
+    
+tokenize_data_params:
+    nproc: 32
+    chunk_size: 51
+    model_input_size: 2048
+    special_token: False
+    collapse_gene_ids: False
+    
+tokenized_format_params:
+    output_prefix: str        
+    file_format: "h5ad"
+
+paths:
+  tokenized_data_dir: /home/BS94_SUR/kedro_geneformer/geneformer-project/data/03_primary/tokenized_data
