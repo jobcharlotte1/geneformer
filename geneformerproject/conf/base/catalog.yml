@@ -52,19 +52,19 @@ TOKEN_DICTIONARY_FILE:
     filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/token_dictionary.pkl'
 
 cardiomyocytes_anndata_raw:
-  type: anndata
+  type: datasets.anndata_dataset.AnnDataSet
   filepath: '/home/BS94_SUR/data/human_cell_atlas/cardiomocytes/data/human_dcm_hcm_cardiomyocytes.h5ad'
 
 cardiomyocytes_anndata_preprocessed:
-    type: anndata
+    type: datasets.anndata_dataset.AnnDataSet
     filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/02_intermediate/top_5000_hvg_cardiomyocytes_data.h5ad'
     
 cardiomyocytes_tokenized:
-    type: kedro.extras.datasets.biosequence.AnnDataSet
+    type: datasets.anndata_dataset.AnnDataSet
     filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/02_intermediate/top_5000_hvg_cardiomyocytes_data.h5ad'
     
 pdac_PAAD_CRA001160_tisch_anndata_raw:
-    type: anndata
+    type: datasets.anndata_dataset.AnnDataSet
     filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/PAAD_CRA001160_expression.h5'
     
 metainfo_PAAD_CRA001160_csv:
@@ -74,5 +74,5 @@ metainfo_PAAD_CRA001160_csv:
     sep: ","  # Optional: specify delimiter if not standard
     
 expressionmatrix_PAAD_CRA001160_h5:
-  type: anndata
+  type: datasets.anndata_dataset.AnnDataSet
   filepath: f'/home/BS94_SUR/tischdb_data/pdac_data/PAAD_CRA001160_expression.h5
