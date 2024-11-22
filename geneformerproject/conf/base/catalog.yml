@@ -1,78 +1,12 @@
-# Here you can define all your data sets by using simple YAML syntax.
-#
-# Documentation for this file format can be found in "The Data Catalog"
-# Link: https://docs.kedro.org/en/stable/data/data_catalog.html
-#
-# We support interacting with a variety of data stores including local file systems, cloud, network and HDFS
-#
-# An example data set definition can look as follows:
-#
-#bikes:
-#  type: pandas.CSVDataset
-#  filepath: "data/01_raw/bikes.csv"
-#
-#weather:
-#  type: spark.SparkDataset
-#  filepath: s3a://your_bucket/data/01_raw/weather*
-#  file_format: csv
-#  credentials: dev_s3
-#  load_args:
-#    header: True
-#    inferSchema: True
-#  save_args:
-#    sep: '|'
-#    header: True
-#
-#scooters:
-#  type: pandas.SQLTableDataset
-#  credentials: scooters_credentials
-#  table_name: scooters
-#  load_args:
-#    index_col: ['name']
-#    columns: ['name', 'gear']
-#  save_args:
-#    if_exists: 'replace'
-#    # if_exists: 'fail'
-#    # if_exists: 'append'
-#
-# The Data Catalog supports being able to reference the same file using two different Dataset implementations
-# (transcoding), templating and a way to reuse arguments that are frequently repeated. See more here:
-# https://docs.kedro.org/en/stable/data/data_catalog.html
-
-GENE_MEDIAN_FILE:
-    type: pickle.PickleDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/gene_median_dictionary.pkl'
-    
-ENSEMBL_MAPPING_FILE:
-    type: pickle.PickleDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/gene_name_id_dict.pkl'
-    
-TOKEN_DICTIONARY_FILE:
-    type: pickle.PickleDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/token_dictionary.pkl'
-
 cardiomyocytes_anndata_raw:
-  type: datasets.anndata_dataset.AnnDataSet
-  filepath: '/home/BS94_SUR/data/human_cell_atlas/cardiomocytes/data/human_dcm_hcm_cardiomyocytes.h5ad'
+  type: geneformer_project.datasets.anndata_dataset.AnnDataSet
+  filepath: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\human_dcm_hcm_cardiomyocytes.h5ad'
 
 cardiomyocytes_anndata_preprocessed:
-    type: datasets.anndata_dataset.AnnDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/02_intermediate/top_5000_hvg_cardiomyocytes_data.h5ad'
+    type: geneformer_project.datasets.anndata_dataset.AnnDataSet
+    filepath: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\02_intermediate\top_5000_hvg_cardiomyocytes_data.h5ad'
     
 cardiomyocytes_tokenized:
-    type: datasets.anndata_dataset.AnnDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/02_intermediate/top_5000_hvg_cardiomyocytes_data.h5ad'
+    type: geneformer_project.datasets.geneformer_tokenizer_dataset.GeneformerDataset
+    filepath: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\03_primary\cardiomyocytes_tokenized'
     
-pdac_PAAD_CRA001160_tisch_anndata_raw:
-    type: datasets.anndata_dataset.AnnDataSet
-    filepath: '/home/BS94_SUR/kedro_geneformer/geneformer-project/data/01_raw/PAAD_CRA001160_expression.h5'
-    
-metainfo_PAAD_CRA001160_csv:
-  type: pandas.CSVDataSet
-  filepath: f'/home/BS94_SUR/tischdb_data/pdac_data/PAAD_CRA001160_CellMetainfo_table.tsv
-  load_args:
-    sep: ","  # Optional: specify delimiter if not standard
-    
-expressionmatrix_PAAD_CRA001160_h5:
-  type: datasets.anndata_dataset.AnnDataSet
-  filepath: f'/home/BS94_SUR/tischdb_data/pdac_data/PAAD_CRA001160_expression.h5

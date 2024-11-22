@@ -1,0 +1,14 @@
+nproc: 32
+chunk_size: 51
+model_input_size: 2048
+special_token: False
+collapse_gene_ids: False
+
+output_prefix: "tokenized"   
+file_format: "h5ad"
+use_generator: False
+
+GENE_MEDIAN_FILE: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\gene_median_dictionary.pkl'
+TOKEN_DICTIONARY_FILE: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\token_dictionary.pkl'
+ENSEMBL_MAPPING_FILE: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\gene_name_id_dict.pkl'
+

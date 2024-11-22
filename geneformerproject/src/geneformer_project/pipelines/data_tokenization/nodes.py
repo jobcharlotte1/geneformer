@@ -1,4 +1,7 @@
-
+"""
+This is a boilerplate pipeline 'data_tokenization'
+generated using Kedro 0.19.9
+"""
 from pathlib import Path
 from typing import Dict, List, Optional, Union
 import os
@@ -22,110 +25,6 @@ import logging
 logger = logging.getLogger(__name__)
 
 
-def read_h5ad_file(filepath):
-    """
-    Reads an .h5ad file and returns an AnnData object.
-
-    Args:
-        filepath: Path to the .h5ad file.
-
-    Returns:
-        AnnData object containing the loaded data.
-    """
-    return sc.read_h5ad(filepath)
-
-
-def read_csv_file(filepath):
-    """
-    Reads a CSV file into a Pandas DataFrame.
-
-    Args:
-        filepath: Path to the CSV file.
-
-    Returns:
-        A Pandas DataFrame containing the data from the CSV file.
-    """
-    return pd.read_csv(filepath)
-
-def get_genes_names(expression_matrix):
-    """
-    Get gene names in the expression matrix to use it as columns names in the gene expression dataframe 
-
-    Args: 
-        expression matrix in a h5 format
-
-    Returns: 
-        genes names present in the expression matrix
-    """
-
-    return [v.decode('UTF-8') for v in expression_matrix.feature_ref['id']]
-
-def get_cells_names(expression_matrix):
-    """
-    Get cell names in the expression matrix to use it as rows names in the gene expression dataframe 
-
-    Args: 
-        expression matrix in a h5 format
-
-    Returns: 
-        cell names present in the expression matrix
-    """
-
-    return [v.decode('UTF-8') for v in expression_matrix.barcodes]
-
-def build_dataframe_from_expressionmatrix(expression_matrix, gene_names, cell_names):
-    """
-    build a dataframe from the expression matrix 
-
-    Args:
-        expression matrix with associated gene names and cell names
-
-    Returns:
-        dataframe built from the expression matrix with gene names as columns and cell names as rows
-    """
-
-    return pd.DataFrame(expression_matrix.matrix.toarray(), index=gene_names, columns=cell_names).T
-
-
-def select_highly_variable_genes(adata, n_top_genes):
-    """
-    select top highly variable genes using scanpy function 
-
-    Args:
-        adata file and number of top genes
-
-    Returns:
-        adata filtered by number of top genes
-    """
-
-    sc.pp.highly_variable_genes(adata, flavor='seurat_v3', n_top_genes=n_top_genes)
-    new_adata = adata[:, adata.var['highly_variable']]
-
-    return new_adata
-
-
-def get_matrix_from_h5(filename):
-    CountMatrix = collections.namedtuple('CountMatrix', ['feature_ref', 'barcodes', 'matrix'])
-    with tables.open_file(filename, 'r') as f:
-        mat_group = f.get_node(f.root, 'matrix')
-        barcodes = f.get_node(mat_group, 'barcodes').read()
-        data = getattr(mat_group, 'data').read()
-        indices = getattr(mat_group, 'indices').read()
-        indptr = getattr(mat_group, 'indptr').read()
-        shape = getattr(mat_group, 'shape').read()
-        matrix = sp_sparse.csc_matrix((data, indices, indptr), shape=shape)
-         
-        feature_ref = {}
-        feature_group = f.get_node(mat_group, 'features')
-        feature_ref['id'] = getattr(feature_group, 'id').read()
-        feature_ref['name'] = getattr(feature_group, 'name').read()
-        feature_ref['feature_type'] = getattr(feature_group, 'feature_type').read()
-         
-        return CountMatrix(feature_ref, barcodes, matrix)
-    
-    
-
-    
 def rank_genes(gene_vector, gene_tokens):
     """
     Rank gene expression vector.
@@ -338,9 +237,9 @@ class TranscriptomeTokenizer:
         model_input_size=2048,
         special_token=False,
         collapse_gene_ids=False,
-        gene_median_file=GENE_MEDIAN_FILE,
-        token_dictionary_file=TOKEN_DICTIONARY_FILE,
-        gene_mapping_file=ENSEMBL_MAPPING_FILE,
+        gene_median_file="GENE_MEDIAN_FILE",
+        token_dictionary_file="TOKEN_DICTIONARY_FILE_FILE",
+        gene_mapping_file="ENSEMBL_MAPPING_FILE",
     ):
         """
         Initialize tokenizer.
@@ -714,24 +613,32 @@ class TranscriptomeTokenizer:
 
     
 def transcriptome_tokenizer_function(
-    parameters: Dict[str, Any],  # Parameters to initialize the tokenizer
-    input_data_path: Path,      # Path to input data
-    output_data_path: Path,     # Path to save tokenized data
-    output_prefix: str,         # Prefix for the output file
-    file_format: str = "h5ad",  # Input file format ("loom" or "h5ad")
+    data_directory: str,
+    output_directory: str,
+    output_prefix: str,
+    file_format: str,
+    parameters: dict,
 ):
     """
     Kedro node to execute the TranscriptomeTokenizer.
     """
     # Initialize the TranscriptomeTokenizer with parameters
     tokenizer = TranscriptomeTokenizer(
-        tokenize_data_params
+        custom_attr_name_dict=parameters.get("custom_attr_name_dict"),
+        nproc=parameters.get("nproc", 32),
+        chunk_size=parameters.get("chunk_size", 512),
+        model_input_size=parameters.get("model_input_size", 2048),
+        special_token=parameters.get("special_token", False),
+        collapse_gene_ids=parameters.get("collapse_gene_ids", False),
+        gene_median_file=parameters["GENE_MEDIAN_FILE"],
+        token_dictionary_file=parameters["TOKEN_DICTIONARY_FILE"],
+        gene_mapping_file=parameters.get("GENE_MAPPING_FILE"),
     )
 
-    # Execute the tokenization
+    # Perform tokenization
     tokenizer.tokenize_data(
-        data_directory=input_data_path,
-        output_directory=output_data_path,
+        data_directory=data_directory,
+        output_directory=output_directory,
         output_prefix=output_prefix,
         file_format=file_format,
         use_generator=parameters.get("use_generator", False),

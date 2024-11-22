@@ -2,6 +2,8 @@
 
 from kedro.framework.project import find_pipelines
 from kedro.pipeline import Pipeline
+import geneformer_project.pipelines.anndata_preprocessing as annp
+import geneformer_project.pipelines.data_tokenization as dt
 
 
 def register_pipelines() -> dict[str, Pipeline]:
@@ -10,6 +12,14 @@ def register_pipelines() -> dict[str, Pipeline]:
     Returns:
         A mapping from pipeline names to ``Pipeline`` objects.
     """
-    pipelines = find_pipelines()
-    pipelines["__default__"] = sum(pipelines.values())
-    return pipelines
+
+    anndata_preprocessing_pipeline = annp.create_pipeline()
+    data_tokenization_pipeline = dt.create_pipeline()
+
+    merged_pipeline = anndata_preprocessing_pipeline + data_tokenization_pipeline
+
+    return {
+        "__default__": merged_pipeline,
+        "data_preprocessing": anndata_preprocessing_pipeline,
+        "data_tokenization": data_tokenization_pipeline ,
+    }

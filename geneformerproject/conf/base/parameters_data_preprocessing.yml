@@ -1,0 +1,4 @@
+select_hvg_genes:
+    nb_top_genes: 5000
+    
+output_filepath: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\02_intermediate\top_5000_hvg_cardiomyocytes_data.h5ad'
