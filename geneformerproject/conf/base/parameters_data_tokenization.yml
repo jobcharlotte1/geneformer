@@ -12,3 +12,5 @@ GENE_MEDIAN_FILE: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\ge
 TOKEN_DICTIONARY_FILE: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\token_dictionary.pkl'
 ENSEMBL_MAPPING_FILE: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\gene_name_id_dict.pkl'
 
+output_path_cardiomyocytes_tokenized: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary'
+output_path_PAAD_CRA001160_tokenized: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary'

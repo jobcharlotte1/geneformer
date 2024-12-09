@@ -1,0 +1,47 @@
+# This is a boilerplate parameters config generated for pipeline 'data_classification'
+# using Kedro 0.19.9.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.9/configuration/parameters.html
+
+output_prefix_classifier: "cm_classifier_test"
+load_and_filter_args:
+ nproc: 32
+n_top_genes: 5000
+length_test_size: 0.2
+random_state: 42
+
+id_split:
+  cardiomyocytes: 'Cell'
+  PAAD_CRA001160: 'Cell'
+
+training_args:
+  cardiomyocytes: {
+                      "num_train_epochs": 5,
+                      "learning_rate": 0.00005,
+                      "lr_scheduler_type": "linear",
+                      "warmup_steps": 500,
+                      "weight_decay": 0.001,
+                      "per_device_train_batch_size": 5,
+                      "seed": 73,
+                  }
+
+  PAAD_CRA001160: {
+                    'num_train_epochs': 2, 
+                     'learning_rate': 0.00012, 
+                     'weight_decay': 0.2363, 
+                     'lr_scheduler_type': 'polynomial', 
+                     'warmup_steps': 1428.76, 
+                     'seed': 25, 
+                     'per_device_train_batch_size': 5,
+                     }
+
+classifier_args_PAAD_CRA001160:
+  classifier_type: 'Cell'
+  cell_state_dict: ['Ductal cell type 1', 'Ductal cell type 2']
+  filter_data: None
+  freeze_layers: 2
+  num_crossval_splits: 1
+  forward_batch_size: 100
+  nproc: 96
+

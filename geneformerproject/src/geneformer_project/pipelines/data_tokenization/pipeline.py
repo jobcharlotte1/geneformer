@@ -19,9 +19,16 @@ def create_pipeline(**kwargs) -> Pipeline:
 
             node(
                     func=transcriptome_tokenizer_function,
-                    inputs=["cardiomyocytes_anndata_preprocessed", "cardiomyocytes_tokenized", "params:output_prefix", "params:file_format", "params:use_generator"],
-                    outputs=None,
-                    name="transcriptome_tokenizer_node",
+                    inputs=["cardiomyocytes_anndata_preprocessed", "params:output_path_cardiomyocytes_tokenized", "params:output_prefix", "params:file_format", "params:use_generator"],
+                    outputs="cardiomyocytes_tokenized",
+                    name="transcriptome_tokenizer_cardiomyocytes_node",
+                ),
+
+            node(
+                    func=transcriptome_tokenizer_function,
+                    inputs=["PAAD_CRA001160_anndata_preprocessed", "params:output_path_PAAD_CRA001160_tokenized", "params:output_prefix", "params:file_format", "params:use_generator"],
+                    outputs="PAAD_CRA001160_tokenized",
+                    name="transcriptome_tokenizer_PAAD_CRA001160_node",
                 ),
         ]
         )

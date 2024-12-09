@@ -1,0 +1,7 @@
+# This is a boilerplate parameters config generated for pipeline 'read_anndata'
+# using Kedro 0.19.10.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.10/configuration/parameters.html
+
+path_PAAD_CRA001160_anndata: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\02_intermediate\PAAD_CRA001160_data.h5ad'

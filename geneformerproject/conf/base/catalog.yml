@@ -1,12 +1,28 @@
 cardiomyocytes_anndata_raw:
   type: geneformer_project.datasets.anndata_dataset.AnnDataSet
-  filepath: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\01_raw\human_dcm_hcm_cardiomyocytes.h5ad'
+  filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\01_raw\human_dcm_hcm_cardiomyocytes.h5ad'
 
 cardiomyocytes_anndata_preprocessed:
     type: geneformer_project.datasets.anndata_dataset.AnnDataSet
-    filepath: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\02_intermediate\top_5000_hvg_cardiomyocytes_data.h5ad'
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\02_intermediate\top_5000_hvg_cardiomyocytes_data.h5ad'
     
 cardiomyocytes_tokenized:
     type: geneformer_project.datasets.geneformer_tokenizer_dataset.GeneformerDataset
-    filepath: 'C:\Users\BS94_SUR\geneformer\geneformerproject\data\03_primary\cardiomyocytes_tokenized'
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\cardiomyocytes_tokenized'
     
+PAAD_CRA001160_expression_raw:
+  type: pandas.HDFDataset
+  filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\01_raw\PAAD_CRA001160_expression.h5'
+  key: data
+
+PAAD_CRA001160_metainfo_raw:
+    type: pandas.CSVDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\02_intermediate\PAAD_CRA001160_CellMetainfo_table.tsv'
+
+PAAD_CRA001160_preprocessed:
+    type: geneformer_project.datasets.anndata_dataset.AnnDataSet
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\02_intermediate\top_5000_hvg_PAAD_CRA001160_data.h5ad'
+
+PAAD_CRA001160_tokenized:
+    type: geneformer_project.datasets.geneformer_tokenizer_dataset.GeneformerDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\PAAD_CRA001160_tokenized'
