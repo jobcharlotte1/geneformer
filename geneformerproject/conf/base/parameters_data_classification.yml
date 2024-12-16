@@ -4,9 +4,12 @@
 # Documentation for this file format can be found in "Parameters"
 # Link: https://docs.kedro.org/en/0.19.9/configuration/parameters.html
 
+model_directory: '/home/BS94_SUR/Geneformer/geneformer-12L-30M'
 output_prefix_classifier: "cm_classifier_test"
+
 load_and_filter_args:
  nproc: 32
+ 
 n_top_genes: 5000
 length_test_size: 0.2
 random_state: 42
@@ -38,10 +41,20 @@ training_args:
 
 classifier_args_PAAD_CRA001160:
   classifier_type: 'Cell'
-  cell_state_dict: ['Ductal cell type 1', 'Ductal cell type 2']
-  filter_data: None
-  freeze_layers: 2
-  num_crossval_splits: 1
-  forward_batch_size: 100
-  nproc: 96
+  cell_state_dict: "['Ductal cell type 1', 'Ductal cell type 2']"
+  filter_data: "None"
+  freeze_layers: "2"
+  num_crossval_splits: "1"
+  forward_batch_size: "100"
+  nproc: "96"
 
+validate_args_PAAD_CRA001160:
+    output_directory: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary'
+    output_prefix: "top_5000_hvg_genes"
+    save_eval_output: "True"
+    predict_eval: "True"
+    predict_trainer: "True"
+    n_hyperopt_trials: "None"
+    
+evaluate_model_PAAD_CRA001160:
+    batch_size: "32"

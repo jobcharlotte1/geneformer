@@ -1,0 +1,8 @@
+project_id: kedro-geneformer
+region: europe-west1
+container_image: gcr.io/kedro-geneformer/viz
+storage_root: gs://your-bucket-name
+
+network:
+  vpc: "projects/computing-axe-prod-ac02/global/networks/vpc-data-local-vertex-axe-prod "
+  

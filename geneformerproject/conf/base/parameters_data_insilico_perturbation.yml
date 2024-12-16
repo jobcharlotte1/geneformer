@@ -1,0 +1,100 @@
+# This is a boilerplate parameters config generated for pipeline 'data_insilico_perturbation'
+# using Kedro 0.19.10.
+#
+# Documentation for this file format can be found in "Parameters"
+# Link: https://docs.kedro.org/en/0.19.10/configuration/parameters.html
+
+gene_info_path: "/home/BS94_SUR/Geneformer/geneformer/gene_name_id_dict.pkl"
+token_info_path: "/home/BS94_SUR/Geneformer/geneformer/token_dictionary.pkl"
+
+model_type: "CellClassifier"
+gene: "all"
+perturbation: "delete"
+perturb_rank_shift: "None"
+
+id_dataset: 'PAAD_CRA001160'
+state: "ductal1_to_ductal2"
+labels: 'Source'
+
+emb_layer: 0
+emb_mode: "cell"
+cell_emb_style: "mean_pool"
+summary_stat: "exact_mean"
+forward_batch_size: 32
+nproc: 96
+
+dataset:
+    cardiomyocytes:
+        output_dir: '/home/BS94_SUR/data/human_cell_atlas/cardiomocytes/preprocessed_data/top_5000_hvg_genes/240604083734'
+        output_prefix: 'cm_classifier_test'
+        datestamp_min: '240604'
+        path_dataset: "/home/BS94_SUR/data/human_cell_atlas/cardiomocytes/preprocessed_data/top_5000_hvg_genes/tokenized data/cardiomyocytes_after_preprocessing.dataset"
+        saved_file: f"{output_dir}/embeddings"
+        saved_prefix: f"embeddings_top_5000_{state}"
+        nb_classes: 3
+        path_model: f"{output_dir}/{datestamp_min}_geneformer_cellClassifier_{output_prefix}/ksplit1/"
+    PAAD_CRA001160:
+        path_data: Path(f'/home/BS94_SUR/tischdb_data/pdac_data/{dataset}')
+        output_dir: f'/home/BS94_SUR/tischdb_data/pdac_data/{dataset}/top_5000_hvg_genes'
+        datestamp_min: 240919
+        n_top_genes: 5000
+        output_prefix: f"top_{n_top_genes}_hvg_genes"
+        labels: 'Celltype'
+        path_model: f"{output_dir}/{datestamp_min}_geneformer_cellClassifier_{output_prefix}/ksplit1/"
+        path_data_tokenized: Path(f'/home/BS94_SUR/tischdb_data/pdac_data/{id_dataset}/top_5000_hvg_genes/tokenized_data/top_5000_hvg_genes.dataset')
+        output_dir_tokenized: f'/home/BS94_SUR/tischdb_data/pdac_data/{id_dataset}/top_5000_hvg_genes/tokenized_data'
+        saved_file: f"{output_dir}/embeddings_{datestamp_min}"
+        saved_prefix: f"top_{n_top_genes}_hvg_genes"
+        nb_classes: 2
+       
+       
+states_parameters:   
+    cardiomyocytes:
+        hcm_to_nf:
+            cell_states_to_model: {"state_key": "disease", 
+                                  "start_state": "HCM", 
+                                  "goal_state": "NF"
+                                  }
+                                  
+            filter_data_dict: {"cell_type":['Cardiomyocyte_I', 'Cardiomyocyte_II', 'Cardiomyocyte_III']}
+            max_n_cells: 50000 
+        nf_to_hcm:
+            cell_states_to_model: {"state_key": "disease", 
+                                  "start_state": "NF", 
+                                  "goal_state": "HCM"
+                                  }
+
+            filter_data_dict: {"cell_type":['Cardiomyocyte_I', 'Cardiomyocyte_II', 'Cardiomyocyte_III']}
+            max_n_cells: 50000 
+
+    PAAD_CRA001160:
+        Source:
+            tumor_to_normal:
+                cell_states_to_model: {"state_key": "Source", 
+                                          "start_state": "Tumor", 
+                                          "goal_state": "Normal"
+                                          }
+                max_n_cells: 10000
+            normal_to_tumor:
+                cell_states_to_model: {"state_key": "Source", 
+                                          "start_state": "Normal", 
+                                          "goal_state": "Tumor"
+                                          }
+                max_n_cells: 10000
+
+
+        Celltype:
+            ductal1_to_ductal2:
+                cell_states_to_model: {"state_key": "Celltype", 
+                                          "start_state": "Ductal cell type 1", 
+                                          "goal_state": "Ductal cell type 2"
+                                          }
+                filter_data_dict: {"Celltype":['Ductal cell type 1', 'Ductal cell type 2']}    
+                max_n_cells: 10000
+            ductal2_to_ductal1:
+                cell_states_to_model: {"state_key": "Celltype", 
+                                          "start_state": "Ductal cell type 2", 
+                                          "goal_state": "Ductal cell type 1"
+                                          }
+                filter_data_dict: {"Celltype":['Ductal cell type 1', 'Ductal cell type 2']}    
+                max_n_cells: 10000

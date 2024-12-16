@@ -1,6 +1,10 @@
 cardiomyocytes_anndata_raw:
   type: geneformer_project.datasets.anndata_dataset.AnnDataSet
   filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\01_raw\human_dcm_hcm_cardiomyocytes.h5ad'
+  
+cardiomyocytes_anndata_sampled:
+    type: geneformer_project.datasets.anndata_dataset.AnnDataSet
+    filepath: '/home/BS94_SUR/data/human_cell_atlas/cardiomocytes/preprocessed_data/top_5000_hvg_genes/adata_sampled.h5ad'
 
 cardiomyocytes_anndata_preprocessed:
     type: geneformer_project.datasets.anndata_dataset.AnnDataSet
@@ -26,3 +30,55 @@ PAAD_CRA001160_preprocessed:
 PAAD_CRA001160_tokenized:
     type: geneformer_project.datasets.geneformer_tokenizer_dataset.GeneformerDataset
     filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\PAAD_CRA001160_tokenized'
+    
+PAAD_CRA001160_adata_splitted:
+    type: geneformer_project.datasets.anndata_dataset.AnnDataSet
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\02_intermediate\PAAD_CRA001160_adata_splitted.h5ad'
+    
+train_test_id_split_dict_PAAD_CRA001160_Cell:
+    type: pickle.PickleDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\02_intermediate\train_test_id_split_dict_PAAD_CRA001160_Cell.pkl'
+    
+train_valid_id_split_dict_PAAD_CRA001160_Cell:
+    type: pickle.PickleDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\02_intermediate\train_valid_id_split_dict_PAAD_CRA001160_Cell.pkl'
+    
+classifier_PAAD_CRA001160:
+  type: geneformer_project.datasets.huggingface_dataset.HuggingFaceModelDataset
+  filepath: "C:/Users/BS94_SUR/kedro-projects/kedro_geneformer/geneformerproject/data/06_models/classifier_PAAD_CRA001160"
+        
+PAAD_CRA001160_tokenized_trainset:
+    type: geneformer_project.datasets.geneformer_tokenizer_dataset.GeneformerDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\PAAD_CRA001160_tokenized_trainset'
+    
+PAAD_CRA001160_tokenized_testset:
+    type: geneformer_project.datasets.geneformer_tokenizer_dataset.GeneformerDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\PAAD_CRA001160_tokenized_testset'
+    
+PAAD_CRA001160_cm_classifier_test_id_class_dict:
+    type: pickle.PickleDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\02_intermediate\PAAD_CRA001160_cm_classifier_test_id_class_dict.pkl'
+    
+all_metrics_PAAD_CRA001160:
+    type: pickle.PickleDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\all_metrics_PAAD_CRA001160.pkl'
+    
+geneformer_model_PAAD_CRA001160:
+    type: geneformer_project.datasets.geneformer_model_dataset.GeneformerModelDataset
+    filepath: "C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\06_models\geneformer_cellClassifier_top_5000_hvg_genes_PAAD_CRA001160\ksplit1\"
+    
+all_metrics_test_PAAD_CRA001160:
+    type: pickle.PickleDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\all_metrics_test_PAAD_CRA001160.pkl'
+    
+gene_info:
+    type: pickle.PickleDataset
+    filepath: "/home/BS94_SUR/Geneformer/geneformer/gene_name_id_dict.pkl"
+    
+token_info:
+    type: pickle.PickleDataset
+    filepath: "/home/BS94_SUR/Geneformer/geneformer/token_dictionary.pkl"
+    
+state_embs_dict_PAAD_CRA001160_Source_normaltotumor: 
+    type: pickle.PickleDataset
+    filepath: 'C:\Users\BS94_SUR\kedro-projects\kedro_geneformer\geneformerproject\data\03_primary\state_embs_dict_PAAD_CRA001160_Source_normaltotumor.pkl'

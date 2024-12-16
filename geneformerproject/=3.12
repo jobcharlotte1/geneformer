@@ -1,0 +1,139 @@
+Channels:
+ - conda-forge
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/BS94_SUR/conda_env/kedro_geneformer_venv
+
+  added / updated specs:
+    - ipykernel
+    - python
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    asttokens-3.0.0            |     pyhd8ed1ab_1          28 KB  conda-forge
+    comm-0.2.2                 |     pyhd8ed1ab_1          12 KB  conda-forge
+    debugpy-1.8.9              |  py313h46c70d0_0         2.5 MB  conda-forge
+    decorator-5.1.1            |     pyhd8ed1ab_1          14 KB  conda-forge
+    exceptiongroup-1.2.2       |     pyhd8ed1ab_1          20 KB  conda-forge
+    executing-2.1.0            |     pyhd8ed1ab_1          28 KB  conda-forge
+    importlib-metadata-8.5.0   |     pyha770c72_1          28 KB  conda-forge
+    ipython-8.30.0             |     pyh707e725_0         586 KB  conda-forge
+    jedi-0.19.2                |     pyhd8ed1ab_1         824 KB  conda-forge
+    jupyter_client-8.6.3       |     pyhd8ed1ab_1         104 KB  conda-forge
+    ld_impl_linux-64-2.43      |       h712a8e2_2         654 KB  conda-forge
+    libexpat-2.6.4             |       h5888daf_0          72 KB  conda-forge
+    libgcc-14.2.0              |       h77fa898_1         829 KB  conda-forge
+    libgcc-ng-14.2.0           |       h69a702a_1          53 KB  conda-forge
+    libgomp-14.2.0             |       h77fa898_1         450 KB  conda-forge
+    liblzma-5.6.3              |       hb9d3cd8_1         109 KB  conda-forge
+    libmpdec-4.0.0             |       h4bc722e_0          88 KB  conda-forge
+    libsqlite-3.47.0           |       hadc24fc_1         855 KB  conda-forge
+    libstdcxx-14.2.0           |       hc0a3c3a_1         3.7 MB  conda-forge
+    libstdcxx-ng-14.2.0        |       h4852527_1          53 KB  conda-forge
+    matplotlib-inline-0.1.7    |     pyhd8ed1ab_1          14 KB  conda-forge
+    nest-asyncio-1.6.0         |     pyhd8ed1ab_1          11 KB  conda-forge
+    openssl-3.4.0              |       hb9d3cd8_0         2.8 MB  conda-forge
+    packaging-24.2             |     pyhd8ed1ab_2          59 KB  conda-forge
+    parso-0.8.4                |     pyhd8ed1ab_1          74 KB  conda-forge
+    pexpect-4.9.0              |     pyhd8ed1ab_1          52 KB  conda-forge
+    pickleshare-0.7.5          |  pyhd8ed1ab_1004          11 KB  conda-forge
+    pip-24.3.1                 |     pyh145f28c_0         1.2 MB  conda-forge
+    platformdirs-4.3.6         |     pyhd8ed1ab_1          20 KB  conda-forge
+    prompt-toolkit-3.0.48      |     pyha770c72_1         264 KB  conda-forge
+    psutil-6.1.0               |  py313h536fd9c_0         483 KB  conda-forge
+    ptyprocess-0.7.0           |     pyhd8ed1ab_1          19 KB  conda-forge
+    pure_eval-0.2.3            |     pyhd8ed1ab_1          16 KB  conda-forge
+    pygments-2.18.0            |     pyhd8ed1ab_1         856 KB  conda-forge
+    python-3.13.1              |ha99a958_102_cp313        31.7 MB  conda-forge
+    python-dateutil-2.9.0.post0|     pyhff2d567_1         217 KB  conda-forge
+    python_abi-3.13            |          5_cp313           6 KB  conda-forge
+    pyzmq-26.2.0               |  py313h8e95178_3         376 KB  conda-forge
+    six-1.17.0                 |     pyhd8ed1ab_0          16 KB  conda-forge
+    stack_data-0.6.3           |     pyhd8ed1ab_1          26 KB  conda-forge
+    tornado-6.4.2              |  py313h536fd9c_0         842 KB  conda-forge
+    traitlets-5.14.3           |     pyhd8ed1ab_1         107 KB  conda-forge
+    typing_extensions-4.12.2   |     pyha770c72_1          39 KB  conda-forge
+    wcwidth-0.2.13             |     pyhd8ed1ab_1          32 KB  conda-forge
+    zeromq-4.3.5               |       h3b0a872_7         328 KB  conda-forge
+    zipp-3.21.0                |     pyhd8ed1ab_1          21 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        50.5 MB
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      conda-forge/linux-64::_libgcc_mutex-0.1-conda_forge 
+  _openmp_mutex      conda-forge/linux-64::_openmp_mutex-4.5-2_gnu 
+  asttokens          conda-forge/noarch::asttokens-3.0.0-pyhd8ed1ab_1 
+  bzip2              conda-forge/linux-64::bzip2-1.0.8-h4bc722e_7 
+  ca-certificates    conda-forge/linux-64::ca-certificates-2024.8.30-hbcca054_0 
+  comm               conda-forge/noarch::comm-0.2.2-pyhd8ed1ab_1 
+  debugpy            conda-forge/linux-64::debugpy-1.8.9-py313h46c70d0_0 
+  decorator          conda-forge/noarch::decorator-5.1.1-pyhd8ed1ab_1 
+  exceptiongroup     conda-forge/noarch::exceptiongroup-1.2.2-pyhd8ed1ab_1 
+  executing          conda-forge/noarch::executing-2.1.0-pyhd8ed1ab_1 
+  importlib-metadata conda-forge/noarch::importlib-metadata-8.5.0-pyha770c72_1 
+  ipykernel          conda-forge/noarch::ipykernel-6.29.5-pyh3099207_0 
+  ipython            conda-forge/noarch::ipython-8.30.0-pyh707e725_0 
+  jedi               conda-forge/noarch::jedi-0.19.2-pyhd8ed1ab_1 
+  jupyter_client     conda-forge/noarch::jupyter_client-8.6.3-pyhd8ed1ab_1 
+  jupyter_core       conda-forge/noarch::jupyter_core-5.7.2-pyh31011fe_1 
+  keyutils           conda-forge/linux-64::keyutils-1.6.1-h166bdaf_0 
+  krb5               conda-forge/linux-64::krb5-1.21.3-h659f571_0 
+  ld_impl_linux-64   conda-forge/linux-64::ld_impl_linux-64-2.43-h712a8e2_2 
+  libedit            conda-forge/linux-64::libedit-3.1.20191231-he28a2e2_2 
+  libexpat           conda-forge/linux-64::libexpat-2.6.4-h5888daf_0 
+  libffi             conda-forge/linux-64::libffi-3.4.2-h7f98852_5 
+  libgcc             conda-forge/linux-64::libgcc-14.2.0-h77fa898_1 
+  libgcc-ng          conda-forge/linux-64::libgcc-ng-14.2.0-h69a702a_1 
+  libgomp            conda-forge/linux-64::libgomp-14.2.0-h77fa898_1 
+  liblzma            conda-forge/linux-64::liblzma-5.6.3-hb9d3cd8_1 
+  libmpdec           conda-forge/linux-64::libmpdec-4.0.0-h4bc722e_0 
+  libsodium          conda-forge/linux-64::libsodium-1.0.20-h4ab18f5_0 
+  libsqlite          conda-forge/linux-64::libsqlite-3.47.0-hadc24fc_1 
+  libstdcxx          conda-forge/linux-64::libstdcxx-14.2.0-hc0a3c3a_1 
+  libstdcxx-ng       conda-forge/linux-64::libstdcxx-ng-14.2.0-h4852527_1 
+  libuuid            conda-forge/linux-64::libuuid-2.38.1-h0b41bf4_0 
+  libzlib            conda-forge/linux-64::libzlib-1.3.1-hb9d3cd8_2 
+  matplotlib-inline  conda-forge/noarch::matplotlib-inline-0.1.7-pyhd8ed1ab_1 
+  ncurses            conda-forge/linux-64::ncurses-6.5-he02047a_1 
+  nest-asyncio       conda-forge/noarch::nest-asyncio-1.6.0-pyhd8ed1ab_1 
+  openssl            conda-forge/linux-64::openssl-3.4.0-hb9d3cd8_0 
+  packaging          conda-forge/noarch::packaging-24.2-pyhd8ed1ab_2 
+  parso              conda-forge/noarch::parso-0.8.4-pyhd8ed1ab_1 
+  pexpect            conda-forge/noarch::pexpect-4.9.0-pyhd8ed1ab_1 
+  pickleshare        conda-forge/noarch::pickleshare-0.7.5-pyhd8ed1ab_1004 
+  pip                conda-forge/noarch::pip-24.3.1-pyh145f28c_0 
+  platformdirs       conda-forge/noarch::platformdirs-4.3.6-pyhd8ed1ab_1 
+  prompt-toolkit     conda-forge/noarch::prompt-toolkit-3.0.48-pyha770c72_1 
+  psutil             conda-forge/linux-64::psutil-6.1.0-py313h536fd9c_0 
+  ptyprocess         conda-forge/noarch::ptyprocess-0.7.0-pyhd8ed1ab_1 
+  pure_eval          conda-forge/noarch::pure_eval-0.2.3-pyhd8ed1ab_1 
+  pygments           conda-forge/noarch::pygments-2.18.0-pyhd8ed1ab_1 
+  python             conda-forge/linux-64::python-3.13.1-ha99a958_102_cp313 
+  python-dateutil    conda-forge/noarch::python-dateutil-2.9.0.post0-pyhff2d567_1 
+  python_abi         conda-forge/linux-64::python_abi-3.13-5_cp313 
+  pyzmq              conda-forge/linux-64::pyzmq-26.2.0-py313h8e95178_3 
+  readline           conda-forge/linux-64::readline-8.2-h8228510_1 
+  six                conda-forge/noarch::six-1.17.0-pyhd8ed1ab_0 
+  stack_data         conda-forge/noarch::stack_data-0.6.3-pyhd8ed1ab_1 
+  tk                 conda-forge/linux-64::tk-8.6.13-noxft_h4845f30_101 
+  tornado            conda-forge/linux-64::tornado-6.4.2-py313h536fd9c_0 
+  traitlets          conda-forge/noarch::traitlets-5.14.3-pyhd8ed1ab_1 
+  typing_extensions  conda-forge/noarch::typing_extensions-4.12.2-pyha770c72_1 
+  tzdata             conda-forge/noarch::tzdata-2024b-hc8b5060_0 
+  wcwidth            conda-forge/noarch::wcwidth-0.2.13-pyhd8ed1ab_1 
+  zeromq             conda-forge/linux-64::zeromq-4.3.5-h3b0a872_7 
+  zipp               conda-forge/noarch::zipp-3.21.0-pyhd8ed1ab_1 
+
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Rolling back transaction: ...working... done

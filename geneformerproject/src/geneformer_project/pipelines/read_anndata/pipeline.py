@@ -12,7 +12,7 @@ def create_pipeline(**kwargs) -> Pipeline:
         
         node(
                 func=read_data,
-                inputs=["cardiomyocytes_anndata_raw", "h5ad", "None", "None"],  # Input defined in the catalog
+                inputs=["cardiomyocytes_anndata_sampled", "h5ad", "None", "None"],  # Input defined in the catalog
                 outputs="cardiomyocytes_anndata",  # Output name in memory
                 name="read_anndata_cardiomyocytes_node",
             ),

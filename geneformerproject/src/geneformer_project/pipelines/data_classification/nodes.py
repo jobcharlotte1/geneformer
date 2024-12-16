@@ -19,7 +19,7 @@ from sklearn.metrics import (
 import torch
 import transformers
 import sys
-sys.path.append("C:\\Users\\BS94_SUR\\geneformer\\geneformerproject")
+sys.path.append("/home/BS94_SUR/kedro_geneformer/geneformerproject")
 from Geneformer.geneformer.classifier import Classifier
 from Geneformer.geneformer.perturber_utils import filter_by_dict
 
@@ -32,6 +32,10 @@ def split_anndata(adata, id_split, length_test_size, random_state_nb):
                             "train": list(train_ids.values) + list(eval_ids.values),
                             "test": list(test_ids.values)}
     
+    train_valid_id_split_dict = {"attr_key": "Cell",
+                            "train": train_ids,
+                            "eval": eval_ids}
+    
     conditions = [
         (adata.obs.Cell.isin(list(train_ids.values))),
         (adata.obs.Cell.isin(list(eval_ids.values))),
@@ -41,7 +45,7 @@ def split_anndata(adata, id_split, length_test_size, random_state_nb):
     adata.obs['set'] = np.select(conditions, choices, default='Other')
     adata.obs.groupby('set')[id_split].value_counts()
 
-    return adata, train_test_id_split_dict
+    return adata, train_test_id_split_dict, train_valid_id_split_dict
 
 
 
@@ -126,3 +130,27 @@ def validate_node(
 )
 
     return all_metrics
+
+
+def evaluate_saved_model_node(
+    classifier: Classifier,
+    model_directory: str,
+    evaluation_data: dict,
+    id_class_dict: dict,
+    output_directory: str,
+    output_prefix: str,
+    batch_size: int = 32,
+    evaluation_metrics: list = None,
+):
+
+    evaluation_results = classifier.evaluate_saved_model(
+        model_directory=model_directory,
+        prepared_evaluation_data_file=evaluation_data,
+        id_class_dict_file=id_class_dict,
+        output_directory=output_directory,
+        output_prefix=output_prefix,
+        batch_size=batch_size,
+        evaluation_metrics=evaluation_metrics,
+    )
+
+    return evaluation_results
